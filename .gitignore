@@ -14,3 +14,8 @@ packages
 
 # Include when developing application packages.
 pubspec.lock
+
+.idea
+.dart_tool
+.DS_Store
+flutter_export_environment.sh
