@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ButtonStaggerAnimation extends StatelessWidget {
   // Animation fields
-  final  controller;
+  final AnimationController controller;
 
   // Display fields
   final Color? color;
@@ -15,7 +15,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
 
   ButtonStaggerAnimation({
     Key? key,
-    this.controller,
+    required this.controller,
     this.color,
     this.progressIndicatorColor,
     this.progressIndicatorSize,
@@ -31,9 +31,9 @@ class ButtonStaggerAnimation extends StatelessWidget {
   }
 
   Widget? _buttonChild() {
-    if (controller!.isAnimating) {
+    if (controller.isAnimating) {
       return Container();
-    } else if (controller!.isCompleted) {
+    } else if (controller.isCompleted) {
       return OverflowBox(
         maxWidth: progressIndicatorSize,
         maxHeight: progressIndicatorSize,
@@ -78,10 +78,10 @@ class ButtonStaggerAnimation extends StatelessWidget {
           width: widthAnimation.value,
           child: ElevatedButton(
             style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                backgroundColor: WidgetStateProperty.all<Color>(color ?? Colors.blue),
+                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
-                    borderRadius: borderRadius ??  BorderRadius.circular(8),
-                    side: BorderSide(color: color ?? Colors.blue),
+                    borderRadius: borderRadiusAnimation.value,
                   ),
                 )
             ),
